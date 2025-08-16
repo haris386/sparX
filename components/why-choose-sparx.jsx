@@ -83,8 +83,8 @@ export default function WhyChooseSparX() {
                 style={{
                   width: "4%",
                   position: "absolute",
-                  top: "3320px",
-                  left: "23%",
+                  top: "3410px",
+                  left: "22%",
                 }}
               />
         <h2
@@ -101,8 +101,8 @@ export default function WhyChooseSparX() {
                 style={{
                   width: "2%",
                   position: "absolute",
-                  top: "3635px",
-                  left: "70%",
+                  top: "3675px",
+                  left: "65%",
                 }}
               />
       </div>
