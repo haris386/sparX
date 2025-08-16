@@ -6,7 +6,7 @@ const sora = Sora({ subsets: ['latin'], weight: ['400', '700'] });
 const outfit = Outfit({ subsets: ['latin'], weight: ['400', '700'] });
 
 export const metadata = {
-  title: 'AccuraCore',
+  title: 'SparX',
 }
 
 export default function RootLayout({ children }) {
