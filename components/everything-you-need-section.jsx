@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
-
 // Define all available images globally
 const allImages = [
   {
@@ -21,8 +20,16 @@ const allImages = [
     src: "/Images/Rule-Based-Automation.png",
     alt: "Rule-Based-Automation",
   },
-  { id: "API-Integrations", src: "/Images/API-Integrations.png", alt: "API Integrations Section" },
-  { id: "Document-&-Image-Management", src: "/Images/Document-&-Image-Management.png", alt: "Document-&-Image-Management View" },
+  {
+    id: "API-Integrations",
+    src: "/Images/API-Integrations.png",
+    alt: "API Integrations Section",
+  },
+  {
+    id: "Document-&-Image-Management",
+    src: "/Images/Document-&-Image-Management.png",
+    alt: "Document-&-Image-Management View",
+  },
 ];
 
 // Define tabs, linking to the central image ID
@@ -42,14 +49,22 @@ const tabs = [
     label: "Rule Based Automation",
     centralImageId: "Rule-Based-Automation",
   },
-  { id: "API-Integrations", label: "API Integrations", centralImageId: "API-Integrations" },
-  { id: "Document-&-Image-Management", label: "Document-&-Image-Management", centralImageId: "Document-&-Image-Management" },
+  {
+    id: "API-Integrations",
+    label: "API Integrations",
+    centralImageId: "API-Integrations",
+  },
+  {
+    id: "Document-&-Image-Management",
+    label: "Document-&-Image-Management",
+    centralImageId: "Document-&-Image-Management",
+  },
 ];
 
 export default function EverythingYouNeedSection() {
   const [activeTab, setActiveTab] = useState("Audit-&-Compliance-Dashboard");
 
-  const currentTab = tabs.find((tab) => tab.id === activeTab) || tabs[1]; // Default to Audit-&-Compliance-Dashboard
+  const currentTab = tabs.find((tab) => tab.id === activeTab) || tabs[1];
 
   // Determine the central, left, and right images
   const centralImageIndex = allImages.findIndex(
@@ -65,7 +80,9 @@ export default function EverythingYouNeedSection() {
   const rightImage = allImages[rightImageIndex];
 
   return (
-    <section style={{ background: "linear-gradient(to right, #f1f2f4, #f3e3d4)",}}>
+    <section
+      style={{ background: "linear-gradient(to right, #f1f2f4, #f3e3d4)" }}
+    >
       <div className="w-full">
         {" "}
         <div
@@ -76,7 +93,10 @@ export default function EverythingYouNeedSection() {
           }}
         >
           {/* Heading */}
-          <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-6 mb-8 lg:mb-12 px-4 lg:px-12" style={{width:"98%", margin:"auto", marginBottom:"3rem"}}>
+          <div
+            className="grid grid-cols-1 md:grid-cols-2 items-center gap-6 mb-8 lg:mb-12 px-4 lg:px-12"
+            style={{ width: "98%", margin: "auto", marginBottom: "3rem" }}
+          >
             {/* Left col */}
             <div>
               <h2
@@ -85,7 +105,7 @@ export default function EverythingYouNeedSection() {
               >
                 Claims command center
               </h2>
-               <p
+              <p
                 className="text-gray-600 leading-relaxed"
                 style={{ fontSize: "16px" }}
               >
@@ -101,7 +121,7 @@ export default function EverythingYouNeedSection() {
                 style={{
                   backgroundColor: "#FF3A41",
                   padding: "25px 15px",
-                  border:"2px solid #f8a8ac"
+                  border: "2px solid #f8a8ac",
                 }}
               >
                 See the Platform in Action
@@ -114,28 +134,26 @@ export default function EverythingYouNeedSection() {
             </div>
           </div>
 
-
           {/* Tab Buttons */}
-         <div className="flex flex-wrap justify-center gap-3 lg:gap-4 mb-8 lg:mb-12 px-4 lg:px-12">
-  {tabs.map((tab) => (
-    <button
-      key={tab.id}
-      onClick={() => setActiveTab(tab.id)}
-      className={`px-4 lg:px-6 py-2 lg:py-3 rounded-full font-regular transition-all duration-300 whitespace-nowrap ${
-        activeTab === tab.id ? "text-white" : "text-black"
-      } focus:outline-none focus:ring-0`}
-      style={{
-        background: activeTab === tab.id ? "#FF3A41" : "white",
-        border: activeTab === tab.id ? "2px solid #f8a8ac" : "unset",
-        boxShadow: "none",
-        fontSize:"12px"
-      }}
-    >
-      {tab.label}
-    </button>
-  ))}
-</div>
-
+          <div className="flex flex-wrap justify-center gap-3 lg:gap-4 mb-8 lg:mb-12 px-4 lg:px-12">
+            {tabs.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`px-4 lg:px-6 py-2 lg:py-3 rounded-full font-regular transition-all duration-300 whitespace-nowrap ${
+                  activeTab === tab.id ? "text-white" : "text-black"
+                } focus:outline-none focus:ring-0`}
+                style={{
+                  background: activeTab === tab.id ? "#FF3A41" : "white",
+                  border: activeTab === tab.id ? "2px solid #f8a8ac" : "unset",
+                  boxShadow: "none",
+                  fontSize: "12px",
+                }}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
 
           {/* Images Slider */}
           <div className="relative w-full overflow-hidden rounded-2xl">
@@ -154,7 +172,7 @@ export default function EverythingYouNeedSection() {
                 <img
                   src={centralImage.src || "/placeholder.svg"}
                   alt={centralImage.alt}
-                  className="h-full object-contain rounded-xl transition-all duration-500 ease-in-out"
+                  className="h-full object-contain rounded-xl transition-all duration-500 ease-in-out slider-img-1"
                   style={{ width: "800px" }}
                 />
               </div>

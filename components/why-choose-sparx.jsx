@@ -79,7 +79,7 @@ export default function WhyChooseSparX() {
         <img
                 src="/Icons/red-left.png"
                 alt="red"
-                className="object-contain"
+                className="object-contain left-el"
                 style={{
                   width: "4%",
                   position: "absolute",
@@ -88,7 +88,7 @@ export default function WhyChooseSparX() {
                 }}
               />
         <h2
-          className="text-gray-900"
+          className="text-gray-900 our-software"
           style={{ fontSize: "30px", fontWeight: "400", padding: "10rem 15rem", paddingBottom:"5rem" }}
         >
           Our software enables AI-augmented decisions across critical insurer
@@ -97,7 +97,7 @@ export default function WhyChooseSparX() {
         <img
                 src="/Icons/red-right.png"
                 alt="red"
-                className="object-contain"
+                className="object-contain right-el"
                 style={{
                   width: "2%",
                   position: "absolute",

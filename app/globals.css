@@ -120,3 +120,134 @@
     @apply bg-background text-foreground;
   }
 }
+
+@media (max-width: 768px) {
+.header{
+      padding: 10px 5px !important;
+}
+
+.mobileNav {
+  border-top-left-radius: 30px !important;
+  border-top-right-radius: 30px !important;
+}
+
+  .hero-title {
+    font-size: 28px !important;
+    text-align: center;
+  }
+
+  .hero-text {
+    text-align: center;
+    font-size: 14px !important;
+  }
+
+  .hero-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-image {
+    width: 90% !important;
+  }
+
+  .main-div {
+    margin-top: 15% !important;
+  }
+
+  .custom-font-1 {
+    font-size: 30px !important;
+  }
+
+  .custom-font-2 {
+    font-size: 15px !important;
+  }
+
+ .custom-element-1{ 
+      width: 10% !important;
+      top: 85% !important;
+      left: 5% !important;
+ }
+  
+  .custom-image-1{
+    width: 80% !important;
+  }
+
+   .custom-element-2{ 
+      width: 5% !important;
+      top: 923px !important;
+      left: 85% !important;
+ }
+
+ .custom-section-1{
+  padding-top: 5px !important;
+ }
+
+ .custom-icons-1 {
+  width:23% !important;
+ }
+
+ .slider-img-1{
+      width: 100% !important;
+ }
+
+ .our-software{ 
+      font-size: 25px !important;
+    font-weight: 400 !important;
+    padding: 5rem 0rem !important;
+    padding-bottom: 0rem !important;
+ }
+
+  .impact-divider {
+    position: relative;
+  }
+
+  .impact-divider::before,
+  .impact-divider::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: white;
+  }
+
+  .impact-divider::before {
+    top: -10px; 
+  }
+
+  .impact-divider::after {
+    bottom: -10px; 
+  }
+
+  .impact-divider > .absolute {
+    display: none;
+  }
+
+  .customF{
+    margin: 0 !important;
+        padding: 5rem 1.5rem !important;
+  }
+
+  .industriesServed {
+    width: 100% !important;
+  }
+
+  .left-el {
+        width: 10% !important;
+    position: absolute !important;
+    top: 4830px !important;
+    left: 4% !important;
+  }
+ 
+  .right-el {
+width: 10% !important;
+    position: absolute !important;
+    top: 5190px !important;
+    left: 70% !important; 
+  }
+
+  .letsWork{
+    font-size: 50px !important;
+  }
+}
+

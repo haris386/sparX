@@ -4,7 +4,7 @@ export default function IndustriesServed() {
       className="py-2 px-4"
       style={{ background: "linear-gradient(to right, #f1f2f4, #f3e3d4)" }}
     >
-      <div style={{ margin: "auto", width: "90%" }}>
+      <div style={{ margin: "auto", width: "90%" }} className="industriesServed">
         {/* Industries Served Section */}
         <div className="text-center mb-16">
           <h2
@@ -104,7 +104,7 @@ export default function IndustriesServed() {
             </div>
 
             {/* Divider */}
-            <div className="hidden md:block relative">
+            <div className="md:block relative impact-divider">
               <div className="absolute left-0 top-0 bottom-0 w-1 bg-white"></div>
               <div className="text-center">
                 <div className=" text-gray-900 mb-4" style={{fontSize:"25px", fontWeight:"600"}}>

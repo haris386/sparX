@@ -13,12 +13,13 @@ export default function Footer() {
           borderRadius: "20px",
           margin: "1rem",
         }}
+        className="customF"
       >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
           {/* Left Column - Heading */}
           <div>
             <h2
-              className="text-white leading-tight"
+              className="text-white leading-tight letsWork"
               style={{ fontSize: "60px" }}
             >
               Let's Work

@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function OurCoreProducts() {
   return (
-    <section className="py-20 px-4" style={{ background: "linear-gradient(to right, #f1f2f4, #f3e3d4)",}}>
+    <section className="py-20 px-4 custom-section-1" style={{ background: "linear-gradient(to right, #f1f2f4, #f3e3d4)",}}>
       <div>
         <div
           className="grid lg:grid-cols-2 gap-30 items-start"
@@ -42,7 +42,7 @@ export default function OurCoreProducts() {
           <div className="flex flex-col gap-5">
             {/* AccuraCore Card */}
             <div className="bg-white rounded-[32px] p-10 flex flex-col gap-5">
-              <div className="bg-[#FF3C41] rounded-[12px] flex items-center justify-center" style={{
+              <div className="bg-[#FF3C41] rounded-[12px] flex items-center justify-center custom-icons-1" style={{
                 width:"12%",
                 height:"50px"
               }}>
@@ -66,7 +66,7 @@ export default function OurCoreProducts() {
 
             {/* ClaimCore Card */}
             <div className="bg-white rounded-[32px] p-10 flex flex-col gap-5">
-              <div className="bg-[#FF3C41] rounded-[12px] flex items-center justify-center" style={{
+              <div className="bg-[#FF3C41] rounded-[12px] flex items-center justify-center custom-icons-1" style={{
                 width:"12%",
                 height:"50px"
               }}>
@@ -91,7 +91,7 @@ export default function OurCoreProducts() {
 
             {/* AccuraCam Card */}
             <div className="bg-white rounded-[32px] p-10 flex flex-col gap-5">
-              <div className="bg-[#FF3C41] rounded-[12px] flex items-center justify-center" style={{
+              <div className="bg-[#FF3C41] rounded-[12px] flex items-center justify-center custom-icons-1" style={{
                 width:"12%",
                 height:"50px"
               }}>

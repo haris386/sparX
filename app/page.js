@@ -1,12 +1,16 @@
+"use client";
+import { useState } from "react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import EverythingYouNeedSection from "@/components/everything-you-need-section";
 import Footer from "@/components/Footer";
 import IndustriesServed from "@/components/Industries-served";
 import OurCoreProducts from "@/components/our-core-products";
 import { Button } from "@/components/ui/button";
 import WhyChooseSparX from "@/components/why-choose-sparx";
-import { ChevronDown } from "lucide-react";
 
 export default function HomePage() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
     <>
       <div
@@ -16,13 +20,12 @@ export default function HomePage() {
         }}
       >
         {/* Header */}
-        <header className="px-6 py-4">
+        <header className="px-6 py-4 header">
           <nav
             className="flex items-center justify-between mx-auto rounded-full px-8 py-4"
             style={{
               width: "95%",
               backgroundColor: "#191817",
-              padding: "10px 30px",
             }}
           >
             {/* Logo */}
@@ -30,36 +33,28 @@ export default function HomePage() {
               <img
                 src="/Logos/SparX/Sparx-W-Dark-RGB-01.png"
                 alt="AccuraCore Logo"
-                className="w-25 object-contain"
+                className="w-24 object-contain"
               />
             </div>
 
-            {/* Navigation Menu */}
+            {/* Desktop Menu */}
             <div className="hidden md:flex items-center space-x-8">
-              <div className="flex items-center space-x-1 text-white hover:text-blue-200 cursor-pointer" style={{fontSize:"12px"}}>
-                <span>About</span>
-                <ChevronDown className="w-4 h-4" />
-              </div>
-              <div className="flex items-center space-x-1 text-white hover:text-blue-200 cursor-pointer" style={{fontSize:"12px"}}>
-                <span>Solutions</span>
-                <ChevronDown className="w-4 h-4" />
-              </div>
-              <div className="flex items-center space-x-1 text-white hover:text-blue-200 cursor-pointer" style={{fontSize:"12px"}}>
-                <span>Solutions</span>
-                <ChevronDown className="w-4 h-4" />
-              </div>
-              <div className="flex items-center space-x-1 text-white hover:text-blue-200 cursor-pointer" style={{fontSize:"12px"}}>
-                <span>Solutions</span>
-                <ChevronDown className="w-4 h-4" />
-              </div>
-              <div className="flex items-center space-x-1 text-white hover:text-blue-200 cursor-pointer" style={{fontSize:"12px"}}>
-                <span>Solutions</span>
-                <ChevronDown className="w-4 h-4" />
-              </div>
+              {["About", "Solutions", "Industries", "Resources", "Contact"].map(
+                (item) => (
+                  <div
+                    key={item}
+                    className="flex items-center space-x-1 text-white hover:text-blue-200 cursor-pointer"
+                    style={{ fontSize: "12px" }}
+                  >
+                    <span>{item}</span>
+                    <ChevronDown className="w-4 h-4" />
+                  </div>
+                )
+              )}
             </div>
 
-            {/* Action Buttons */}
-            <div className="flex items-center space-x-3">
+            {/* Desktop Button */}
+            <div className="hidden md:flex items-center space-x-3">
               <Button
                 className="text-white rounded-full flex items-center"
                 style={{
@@ -77,16 +72,60 @@ export default function HomePage() {
                 />
               </Button>
             </div>
+
+            {/* Mobile Hamburger */}
+            <div className="md:hidden flex items-center">
+              <button onClick={() => setMenuOpen(!menuOpen)}>
+                {menuOpen ? (
+                  <X className="text-white w-8 h-8" />
+                ) : (
+                  <Menu className="text-white w-8 h-8" />
+                )}
+              </button>
+            </div>
           </nav>
+
+          {/* Mobile Menu */}
+          {menuOpen && (
+            <div className="md:hidden bg-[#191817] px-6 py-4 space-y-4 mobileNav">
+              <div className="flex flex-col space-y-4 text-white text-sm">
+                <span>About</span>
+                <span>Solutions</span>
+                <span>Industries</span>
+                <span>Resources</span>
+                <span>Contact</span>
+              </div>
+
+              {/* Mobile Button */}
+              <div className="flex flex-col space-y-3 mt-4">
+                           <Button
+                className="text-white rounded-full flex items-center"
+                style={{
+                  backgroundColor: "#FF3A41",
+                  padding: "25px 15px",
+                  border: "2px solid #f8a8ac",
+                  fontSize:"13px"
+                }}
+              >
+                Explore Our Products
+                <img
+                  src="/Icons/Vector.png"
+                  alt="Arrow Icon"
+                  className="w-3 h-4 ml-2"
+                />
+              </Button>
+              </div>
+            </div>
+          )}
         </header>
 
         {/* Hero Section */}
         <main className="px-6 py-0">
-          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center main-div">
             {/* Left Column */}
             <div style={{ marginLeft: "5%" }}>
               <h1
-                className="text-gray-900 leading-tight mb-6"
+                className="text-gray-900 leading-tight mb-6 custom-font-1"
                 style={{ fontSize: "40px", fontWeight: "400" }}
               >
                 Empowering the Future with Smarter Digital{" "}
@@ -101,7 +140,7 @@ export default function HomePage() {
                   Solutions
                 </span>
               </h1>
-              <p className="text-md text-gray-700 mb-8 leading-relaxed">
+              <p className="text-md text-gray-700 mb-8 leading-relaxed custom-font-2">
                 From intelligent insurance automation to real-time video
                 analytics and secure data platforms—Sparx builds solutions that
                 redefine industries.
@@ -128,7 +167,7 @@ export default function HomePage() {
               <img
                 src="/Icons/red-left.png"
                 alt="red"
-                className="object-contain"
+                className="object-contain custom-element-1"
                 style={{
                   width: "4%",
                   position: "absolute",
@@ -139,13 +178,13 @@ export default function HomePage() {
               <img
                 src="/Images/Hero-Image.png"
                 alt="Hero Illustration"
-                className="object-contain"
+                className="object-contain custom-image-1"
                 style={{ width: "65%" }}
               />
-               <img
+              <img
                 src="/Icons/blue-right.png"
                 alt="red"
-                className="object-contain"
+                className="object-contain custom-element-2"
                 style={{
                   width: "2%",
                   position: "absolute",
