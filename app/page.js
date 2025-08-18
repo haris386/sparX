@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import EverythingYouNeedSection from "@/components/everything-you-need-section";
 import Footer from "@/components/Footer";
 import IndustriesServed from "@/components/Industries-served";
@@ -10,6 +10,13 @@ import WhyChooseSparX from "@/components/why-choose-sparx";
 
 export default function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const handleScroll = (id) => {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
 
   return (
     <>
@@ -39,18 +46,21 @@ export default function HomePage() {
 
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center space-x-8">
-              {["About", "Solutions", "Industries", "Resources", "Contact"].map(
-                (item) => (
-                  <div
-                    key={item}
-                    className="flex items-center space-x-1 text-white hover:text-blue-200 cursor-pointer"
-                    style={{ fontSize: "12px" }}
-                  >
-                    <span>{item}</span>
-                    <ChevronDown className="w-4 h-4" />
-                  </div>
-                )
-              )}
+              {[
+                { label: "About", id: "about" },
+                { label: "Products", id: "products" },
+                { label: "Why Choose Us", id: "why" },
+                { label: "Contact Us", id: "contact" },
+              ].map((item) => (
+                <div
+                  key={item.id}
+                  onClick={() => handleScroll(item.id)}
+                  className="flex items-center space-x-1 text-white hover:text-blue-200 cursor-pointer"
+                  style={{ fontSize: "12px" }}
+                >
+                  <span>{item.label}</span>
+                </div>
+              ))}
             </div>
 
             {/* Desktop Button */}
@@ -61,7 +71,7 @@ export default function HomePage() {
                   backgroundColor: "#FF3A41",
                   padding: "25px 15px",
                   border: "2px solid #f8a8ac",
-                  fontSize:"13px"
+                  fontSize: "13px",
                 }}
               >
                 Explore Our Products
@@ -89,38 +99,37 @@ export default function HomePage() {
           {menuOpen && (
             <div className="md:hidden bg-[#191817] px-6 py-4 space-y-4 mobileNav">
               <div className="flex flex-col space-y-4 text-white text-sm">
-                <span>About</span>
-                <span>Solutions</span>
-                <span>Industries</span>
-                <span>Resources</span>
-                <span>Contact</span>
+                <span onClick={() => handleScroll("about")}>About</span>
+                <span onClick={() => handleScroll("products")}>Products</span>
+                <span onClick={() => handleScroll("why")}>Why Choose Us</span>
+                <span onClick={() => handleScroll("contact")}>Contact Us</span>
               </div>
 
               {/* Mobile Button */}
               <div className="flex flex-col space-y-3 mt-4">
-                           <Button
-                className="text-white rounded-full flex items-center"
-                style={{
-                  backgroundColor: "#FF3A41",
-                  padding: "25px 15px",
-                  border: "2px solid #f8a8ac",
-                  fontSize:"13px"
-                }}
-              >
-                Explore Our Products
-                <img
-                  src="/Icons/Vector.png"
-                  alt="Arrow Icon"
-                  className="w-3 h-4 ml-2"
-                />
-              </Button>
+                <Button
+                  className="text-white rounded-full flex items-center"
+                  style={{
+                    backgroundColor: "#FF3A41",
+                    padding: "25px 15px",
+                    border: "2px solid #f8a8ac",
+                    fontSize: "13px",
+                  }}
+                >
+                  Explore Our Products
+                  <img
+                    src="/Icons/Vector.png"
+                    alt="Arrow Icon"
+                    className="w-3 h-4 ml-2"
+                  />
+                </Button>
               </div>
             </div>
           )}
         </header>
 
         {/* Hero Section */}
-        <main className="px-6 py-0">
+        <main id="about" className="px-6 py-0">
           <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center main-div">
             {/* Left Column */}
             <div style={{ marginLeft: "5%" }}>
@@ -197,15 +206,21 @@ export default function HomePage() {
         </main>
       </div>
 
-      <OurCoreProducts />
+      <div id="products">
+        <OurCoreProducts />
+      </div>
 
       <EverythingYouNeedSection />
 
-      <WhyChooseSparX />
+      <div id="why">
+        <WhyChooseSparX />
+      </div>
 
       <IndustriesServed />
 
-      <Footer />
+      <div id="contact">
+        <Footer />
+      </div>
     </>
   );
 }
