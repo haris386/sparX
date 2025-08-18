@@ -55,7 +55,7 @@ export default function HomePage() {
                 <div
                   key={item.id}
                   onClick={() => handleScroll(item.id)}
-                  className="flex items-center space-x-1 text-white hover:text-blue-200 cursor-pointer"
+                  className="flex items-center space-x-1 text-white hover:text-red-200 cursor-pointer"
                   style={{ fontSize: "12px" }}
                 >
                   <span>{item.label}</span>
