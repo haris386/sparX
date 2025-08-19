@@ -26,7 +26,7 @@ const numberWithinRange = (number, min, max) =>
   Math.min(Math.max(number, min), max);
 
 export default function EverythingYouNeedSection() {
-  const [activeTab, setActiveTab] = useState("Audit-&-Compliance-Dashboard");
+  const [activeTab, setActiveTab] = useState("Real-Time-Collaboration");
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "center" });
 
   const tweenFactor = useRef(0);
