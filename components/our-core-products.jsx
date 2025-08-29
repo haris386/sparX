@@ -82,8 +82,8 @@ export default function OurCoreProducts() {
                   ClaimCore
                 </h3>
                 <p className="text-[14px] text-gray-600 leading-relaxed">
-                  Streamline End-To-End Claims Management Platform Tailored For
-                  US Insurance Companies—Automate FNOL, Documents, Approvals,
+                  A Streamlined End-To-End Claims Management Platform Tailored For
+                  US Insurance Companies—Automating FNOL, Documents, Approvals,
                   And Compliance
                 </p>
               </div>

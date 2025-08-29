@@ -82,54 +82,6 @@ export default function IndustriesServed() {
           </div>
         </div>
 
-        {/* Trusted Impact Section */}
-        <div className="text-center mt-20 mb-20">
-          <h2
-            className="text-gray-900 mb-4"
-            style={{ fontSize: "25px", fontWeight: "400" }}
-          >
-            Trusted Impact
-          </h2>
-
-          {/* Impact Stats */}
-          <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
-            {/* 2M Stat */}
-            <div className="text-center">
-              <div className=" text-gray-900 mb-4" style={{fontSize:"25px", fontWeight:"600"}}>2M</div>
-              <p className="text-gray-600" style={{fontSize:"14px"}}>
-                Recovered warranty
-                <br />
-                and claim funds
-              </p>
-            </div>
-
-            {/* Divider */}
-            <div className="md:block relative impact-divider">
-              <div className="absolute left-0 top-0 bottom-0 w-1 bg-white"></div>
-              <div className="text-center">
-                <div className=" text-gray-900 mb-4" style={{fontSize:"25px", fontWeight:"600"}}>
-                  25-50%
-                </div>
-                <p className="text-gray-600" style={{fontSize:"14px"}}>
-                  Reduction in billing errors
-                  <br />
-                  and manual processing time
-                </p>
-              </div>
-              <div className="absolute right-0 top-0 bottom-0 w-1 bg-white"></div>
-            </div>
-
-            {/* 99.9% Stat */}
-            <div className="text-center">
-              <div className=" text-gray-900 mb-4" style={{fontSize:"25px", fontWeight:"600"}}>99.9%</div>
-              <p className="text-gray-600" style={{fontSize:"14px"}}>
-                Integrated audit history and
-                <br />
-                compliance reporting
-              </p>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
   );
