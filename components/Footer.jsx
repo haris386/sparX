@@ -49,7 +49,7 @@ export default function Footer() {
                 style={{
                   backgroundColor: "white",
                   padding: "20px 25px",
-                  cursor:"pointer"
+                  cursor: "pointer",
                 }}
               >
                 Contact Us
@@ -111,35 +111,61 @@ export default function Footer() {
 
           {/* Address Column */}
           <div className="space-y-4">
-            <h3 className="text-white" style={{ fontSize: "20px" }}>Address</h3>
+            <h3 className="text-white" style={{ fontSize: "20px" }}>
+              Address
+            </h3>
             <p className="text-gray-300" style={{ fontSize: "14px" }}>
-              356, road - 3, NewYork,
+              8910 W 192nd St. Unit P
               <br />
-              United State
+              Mokena, IL 60448
             </p>
           </div>
 
           {/* Contact Us Column */}
+          {/* Contact Us Column */}
           <div className="space-y-4">
-            <h3 className="text-white" style={{ fontSize: "20px" }}>Contact Us</h3>
+            <h3 className="text-white" style={{ fontSize: "20px" }}>
+              Contact Us
+            </h3>
             <div className="space-y-2">
-              <p className="text-gray-300" style={{ fontSize: "14px" }}>+0123 578960857</p>
-              <p className="text-gray-300" style={{ fontSize: "14px" }}>+0123 578960857</p>
-              <p className="text-gray-300" style={{ fontSize: "14px" }}>xyzfreebook@gmail.com</p>
+              <p className="text-gray-300" style={{ fontSize: "14px" }}>
+                <a href="tel:+18778877279" className="hover:text-white">
+                  +1 (877) 887-7279
+                </a>
+              </p>
+              <p className="text-gray-300" style={{ fontSize: "14px" }}>
+                <a
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=admin@sparxtech.com"
+                  target="_blank"
+                >
+                  admin@sparxtech.com
+                </a>
+              </p>
             </div>
           </div>
 
           {/* Our Policies Column */}
           <div className="space-y-4">
-            <h3 className="text-white" style={{ fontSize: "20px" }}>Our Policies</h3>
+            <h3 className="text-white" style={{ fontSize: "20px" }}>
+              Our Policies
+            </h3>
             <div className="space-y-2">
-              <p className="text-gray-300 hover:text-white cursor-pointer" style={{ fontSize: "14px" }}>
+              <p
+                className="text-gray-300 hover:text-white cursor-pointer"
+                style={{ fontSize: "14px" }}
+              >
                 Privacy Policies
               </p>
-              <p className="text-gray-300 hover:text-white cursor-pointer" style={{ fontSize: "14px" }}>
+              <p
+                className="text-gray-300 hover:text-white cursor-pointer"
+                style={{ fontSize: "14px" }}
+              >
                 Terms of use
               </p>
-              <p className="text-gray-300 hover:text-white cursor-pointer" style={{ fontSize: "14px" }}>
+              <p
+                className="text-gray-300 hover:text-white cursor-pointer"
+                style={{ fontSize: "14px" }}
+              >
                 Refund Policy
               </p>
             </div>
@@ -250,7 +276,12 @@ export default function Footer() {
                       value="AccuraCore"
                       className="h-4 w-4 text-red-500 border-gray-300 rounded"
                     />
-                    <span className="ml-2 text-gray-700" style={{ fontSize: '13px' }}>AccuraCore</span>
+                    <span
+                      className="ml-2 text-gray-700"
+                      style={{ fontSize: "13px" }}
+                    >
+                      AccuraCore
+                    </span>
                   </label>
                   <label className="flex items-center">
                     <input
@@ -259,7 +290,12 @@ export default function Footer() {
                       value="ClaimCore"
                       className="h-4 w-4 text-red-500 border-gray-300 rounded"
                     />
-                    <span className="ml-2 text-gray-700" style={{ fontSize: '13px' }}>ClaimCore</span>
+                    <span
+                      className="ml-2 text-gray-700"
+                      style={{ fontSize: "13px" }}
+                    >
+                      ClaimCore
+                    </span>
                   </label>
                   <label className="flex items-center">
                     <input
@@ -268,7 +304,12 @@ export default function Footer() {
                       value="AccuraCam"
                       className="h-4 w-4 text-red-500 border-gray-300 rounded"
                     />
-                    <span className="ml-2 text-gray-700" style={{ fontSize: '13px' }}>AccuraCam</span>
+                    <span
+                      className="ml-2 text-gray-700"
+                      style={{ fontSize: "13px" }}
+                    >
+                      AccuraCam
+                    </span>
                   </label>
                 </div>
               </div>
@@ -277,7 +318,12 @@ export default function Footer() {
               <button
                 type="submit"
                 className="w-full text-white font-bold py-3 rounded-full transition-colors duration-300 shadow-md"
-                style={{ backgroundColor: "red", padding: "10px 15px", cursor: "pointer", fontSize: "15px" }}
+                style={{
+                  backgroundColor: "red",
+                  padding: "10px 15px",
+                  cursor: "pointer",
+                  fontSize: "15px",
+                }}
               >
                 Submit
               </button>
