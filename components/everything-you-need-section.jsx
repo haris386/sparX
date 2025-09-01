@@ -5,38 +5,37 @@ import useEmblaCarousel from "embla-carousel-react";
 import { Button } from "@/components/ui/button";
 
 const allImages = [
-  { 
-    id: "Real-Time-Collaboration", 
-    src: "/Images/Real-Time-Collaboration.png", 
-    alt: "Real Time Collaboration", 
-    text: "Multiple channels for communication, on a claim-by-claim basis as well as on each photo or document." 
+  {
+    id: "Real-Time-Collaboration",
+    src: "/Images/Real-Time-Collaboration.png",
+    alt: "Real Time Collaboration",
+    text: "Multiple channels for communication, on a claim-by-claim basis as well as on each photo or document.",
   },
-  { 
-    id: "Audit-&-Compliance-Dashboard", 
-    src: "/Images/Audit-&-Compliance-Dashboard.png", 
-    alt: "Audit & Compliance Dashboard", 
-    text: "AccuraCore's dashboard provides real-time compliance insights, audit trails, and automated alerts—helping you stay inspection-ready and reduce risk." 
+  {
+    id: "Audit-&-Compliance-Dashboard",
+    src: "/Images/Audit-&-Compliance-Dashboard.png",
+    alt: "Audit & Compliance Dashboard",
+    text: "AccuraCore's dashboard provides real-time compliance insights, audit trails, and automated alerts—helping you stay inspection-ready and reduce risk.",
   },
-  { 
-    id: "Rule-Based-Automation", 
-    src: "/Images/Rule-Based-Automation.png", 
-    alt: "Rule Based Automation", 
-    text: "AccuraCore’s automation system allows for user-defined rules based on events and timers. Send messages, update statuses, and assign jobs and contacts however you need." 
+  {
+    id: "Rule-Based-Automation",
+    src: "/Images/Rule-Based-Automation.png",
+    alt: "Rule Based Automation",
+    text: "AccuraCore’s automation system allows for user-defined rules based on events and timers. Send messages, update statuses, and assign jobs and contacts however you need.",
   },
-  { 
-    id: "API-Integrations", 
-    src: "/Images/API-Integrations.png", 
-    alt: "API Integrations", 
-    text: "We’re committed to providing the most power to the user. Ask us about our API integrations." 
+  {
+    id: "API-Integrations",
+    src: "/Images/API-Integrations.png",
+    alt: "API Integrations",
+    text: "We’re committed to providing the most power to the user. Ask us about our API integrations.",
   },
-  { 
-    id: "Document-&-Image-Management", 
-    src: "/Images/Document-&-Image-Management.png", 
-    alt: "Document & Image Management", 
-    text: "Documentation is at the Core of what we do. Photography and document uploading is a breeze with AccuraCam and our document scanner. Comment on each photo and document, search and sort based by tags and document types." 
+  {
+    id: "Document-&-Image-Management",
+    src: "/Images/Document-&-Image-Management.png",
+    alt: "Document & Image Management",
+    text: "Documentation is at the Core of what we do. Photography and document uploading is a breeze with AccuraCam and our document scanner. Comment on each photo and document, search and sort based by tags and document types.",
   },
 ];
-
 
 const tabs = [
   { id: "Real-Time-Collaboration", label: "Real Time Collaboration" },
@@ -53,7 +52,10 @@ const numberWithinRange = (number, min, max) =>
 
 export default function EverythingYouNeedSection() {
   const [activeTab, setActiveTab] = useState("Real-Time-Collaboration");
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: "center" });
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
+    align: "center",
+  });
 
   const tweenFactor = useRef(0);
   const tweenNodes = useRef([]);
@@ -125,18 +127,29 @@ export default function EverythingYouNeedSection() {
   );
 
   return (
-    <section style={{ background: "linear-gradient(to right, #f1f2f4, #f3e3d4)" }}>
-      <div className="w-full p-8 lg:p-12" style={{ paddingLeft: 0, paddingRight: 0 }}>
+    <section
+      style={{ background: "linear-gradient(to right, #f1f2f4, #f3e3d4)" }}
+    >
+      <div
+        className="w-full p-8 lg:p-12"
+        style={{ paddingLeft: 0, paddingRight: 0 }}
+      >
         {/* Heading + CTA */}
         <div
           className="grid grid-cols-1 md:grid-cols-2 items-center gap-6 mb-8 lg:mb-12 px-4 lg:px-12"
           style={{ width: "98%", margin: "auto", marginBottom: "3rem" }}
         >
           <div>
-            <h2 className="text-gray-900 mb-4" style={{ fontSize: "30px", fontWeight: "400" }}>
+            <h2
+              className="text-gray-900 mb-4"
+              style={{ fontSize: "30px", fontWeight: "400" }}
+            >
               Claims command center
             </h2>
-            <p className="text-gray-600 leading-relaxed" style={{ fontSize: "16px" }}>
+            <p
+              className="text-gray-600 leading-relaxed"
+              style={{ fontSize: "16px" }}
+            >
               AccuraCore brings together adjusters, vendors, and clients in a
               single secure environment. Designed for scale, built for speed.
             </p>
@@ -152,7 +165,11 @@ export default function EverythingYouNeedSection() {
               }}
             >
               See the Platform in Action
-              <img src="/Icons/Vector.png" alt="Arrow Icon" className="w-3 h-4 ml-2" />
+              <img
+                src="/Icons/Vector.png"
+                alt="Arrow Icon"
+                className="w-3 h-4 ml-2"
+              />
             </Button>
           </div>
         </div>
@@ -183,22 +200,37 @@ export default function EverythingYouNeedSection() {
             {allImages.map((img) => (
               <div
                 key={img.id}
-                className="embla__slide flex-[0_0_55%] flex justify-center items-center px-1 relative"
+                className="embla__slide flex-[0_0_100%] md:flex-[0_0_55%] flex justify-center items-center px-1 relative"
               >
                 {/* Background Image */}
                 <div
-                  className="bg-slide w-full h-[500px] rounded-xl flex flex-col justify-end"
+                  className="bg-slide w-full h-[300px] md:h-[500px] rounded-xl flex flex-col justify-end"
                   style={{
                     backgroundImage: `url(${img.src})`,
                     backgroundSize: "contain",
                     backgroundPosition: "center",
-                    backgroundRepeat:"no-repeat"
+                    backgroundRepeat: "no-repeat",
                   }}
                 >
                   {/* Overlay Box */}
-                  <div className="m-4 rounded-md backdrop-blur-[5px]" style={{backgroundColor: "#3838386b", marginBottom:"3.6rem", padding:"20px"}}>
-                    <h3 className="text-white font-semibold" style={{marginBottom:"10px"}}>{img.alt}</h3>
-                    <p className="text-white text-sm">{img.text}</p>
+                  <div
+                    className="m-4 rounded-md backdrop-blur-[5px] 
+             mb-[2.5rem] md:mb-[3.6rem] 
+             p-[10px] md:p-[20px]"
+                    style={{
+                      backgroundColor: "#3838386b",
+                    }}
+                  >
+                    <h3
+                      className="text-white font-semibold 
+               text-[13px] md:text-base 
+               mb-[10px]"
+                    >
+                      {img.alt}
+                    </h3>
+                    <p className="text-white text-[11px] md:text-sm">
+                      {img.text}
+                    </p>
                   </div>
                 </div>
               </div>
