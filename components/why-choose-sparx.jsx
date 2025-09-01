@@ -80,12 +80,6 @@ export default function WhyChooseSparX() {
                 src="/Icons/red-left.png"
                 alt="red"
                 className="object-contain left-el"
-                style={{
-                  width: "4%",
-                  position: "absolute",
-                  top: "3410px",
-                  left: "22%",
-                }}
               />
         <h2
           className="text-gray-900 our-software"
@@ -98,12 +92,6 @@ export default function WhyChooseSparX() {
                 src="/Icons/red-right.png"
                 alt="red"
                 className="object-contain right-el"
-                style={{
-                  width: "2%",
-                  position: "absolute",
-                  top: "3675px",
-                  left: "65%",
-                }}
               />
       </div>
     </section>

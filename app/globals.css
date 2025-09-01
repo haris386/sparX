@@ -121,6 +121,19 @@
   }
 }
 
+.left-el{
+                     width: 4% !important;
+                  position: absolute !important;
+                  top: 3290px !important;
+                  left: 22% !important;
+}
+.right-el{
+   width: 2% !important;
+                  position: absolute !important;
+                  top: 3560px !important;
+                  left: 64% !important;
+}
+
 @media (max-width: 768px) {
 .header{
       padding: 10px 5px !important;
@@ -235,15 +248,15 @@
   .left-el {
         width: 10% !important;
     position: absolute !important;
-    top: 4830px !important;
-    left: 4% !important;
+    top: 4588px !important;
+    left: 2% !important;
   }
  
   .right-el {
 width: 10% !important;
     position: absolute !important;
-    top: 5190px !important;
-    left: 70% !important; 
+    top: 4880px !important;
+    left: 65% !important; 
   }
 
   .letsWork{
