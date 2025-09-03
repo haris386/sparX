@@ -121,18 +121,17 @@
   }
 }
 
-.left-el{
-                     width: 4% !important;
-                  position: absolute !important;
-                  top: 3290px !important;
-                  left: 22% !important;
-}
-.right-el{
-   width: 2% !important;
-                  position: absolute !important;
-                  top: 3560px !important;
-                  left: 64% !important;
-}
+  .left-el {
+    position: absolute !important;
+    top: 3239px !important;
+    left: 275px !important;
+  }
+ 
+  .right-el {
+    position: absolute !important;
+    top: 3535px !important;
+    right: 430px !important; 
+  }
 
 @media (max-width: 768px) {
 .header{
@@ -177,7 +176,7 @@
 
  .custom-element-1{ 
       width: 10% !important;
-      top: 52% !important;
+      top: 55% !important;
       left: 5% !important;
  }
   
@@ -187,7 +186,7 @@
 
    .custom-element-2{ 
       width: 5% !important;
-      top: 958px !important;
+      top: 955px !important;
       left: 85% !important;
  }
 
@@ -248,15 +247,15 @@
   .left-el {
         width: 10% !important;
     position: absolute !important;
-    top: 4588px !important;
-    left: 2% !important;
+    top: 4583px !important;
+    left: 4% !important;
   }
  
   .right-el {
 width: 10% !important;
     position: absolute !important;
-    top: 4880px !important;
-    left: 65% !important; 
+    top: 4870px !important;
+    right: 15% !important; 
   }
 
   .letsWork{
@@ -264,3 +263,10 @@ width: 10% !important;
   }
 }
 
+.font-sora {
+  font-family: 'Sora', sans-serif;
+}
+
+.font-outfit {
+  font-family: 'Outfit', sans-serif;
+}

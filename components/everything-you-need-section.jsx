@@ -204,7 +204,7 @@ export default function EverythingYouNeedSection() {
               >
                 {/* Background Image */}
                 <div
-                  className="bg-slide w-full h-[300px] md:h-[500px] rounded-xl flex flex-col justify-end"
+                  className="relative bg-slide w-full h-[300px] md:h-[500px] rounded-xl flex flex-col justify-end"
                   style={{
                     backgroundImage: `url(${img.src})`,
                     backgroundSize: "contain",
@@ -213,14 +213,13 @@ export default function EverythingYouNeedSection() {
                   }}
                 >
                   {/* Overlay Box */}
-                  <div
-                    className="m-4 rounded-md backdrop-blur-[5px] 
-             mb-[2.5rem] md:mb-[3.6rem] 
-             p-[10px] md:p-[20px]"
-                    style={{
-                      backgroundColor: "#3838386b",
-                    }}
-                  >
+                   <div
+    className="absolute bottom-7 left-1/2 -translate-x-1/2 
+               w-[95%] max-w-[800px] 
+               rounded-md backdrop-blur-[5px] 
+               p-[10px] md:p-[20px]"
+    style={{ backgroundColor: "#3838386b" }}
+  >
                     <h3
                       className="text-white font-semibold 
                text-[13px] md:text-base 
