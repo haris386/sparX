@@ -196,12 +196,16 @@ export default function EverythingYouNeedSection() {
 
         {/* Embla Carousel */}
         <div className="embla overflow-hidden" ref={emblaRef}>
-          <div className="embla__container flex">
+           <div className="embla__container flex gap-6">
             {allImages.map((img) => (
               <div
                 key={img.id}
-                className="embla__slide flex-[0_0_100%] md:flex-[0_0_55%] flex justify-center items-center px-1 relative"
-              >
+               className="
+          embla__slide flex-shrink-0 
+          w-[90%] md:w-[500px] lg:w-[850px] 
+          flex justify-center items-center relative
+        "
+      >
                 {/* Background Image */}
                 <div
                   className="relative bg-slide w-full h-[300px] md:h-[500px] rounded-xl flex flex-col justify-end"

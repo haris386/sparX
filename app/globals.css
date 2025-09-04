@@ -121,17 +121,33 @@
   }
 }
 
-  .left-el {
-    position: absolute !important;
-    top: 3239px !important;
-    left: 275px !important;
-  }
- 
-  .right-el {
-    position: absolute !important;
-    top: 3535px !important;
-    right: 430px !important; 
-  }
+.left-el {
+  position: absolute;
+    top: 10%;
+    left: 15%;
+    width: 7%;
+}
+
+.right-el {
+  position: absolute;
+  top: 80%;
+    right: 30%;
+    width: 5%;
+}
+
+.custom-element-1 {
+  position: absolute;
+    top: 0%;
+    left: 10%;
+    width: 6%;
+}
+
+.custom-element-2 {
+  position: absolute;
+top: 100%;
+    right: 10%;
+    width: 4%;
+}
 
 @media (max-width: 768px) {
 .header{
@@ -174,21 +190,21 @@
     font-size: 15px !important;
   }
 
- .custom-element-1{ 
-      width: 10% !important;
-      top: 55% !important;
-      left: 5% !important;
- }
+ .custom-element-1 {
+top: 0%;
+        left: 0%;
+        width: 10%;
+  }
+  .custom-element-2 {
+top: 100%;
+        right: 0%;
+        width: 8%;
+  }
   
   .custom-image-1{
     width: 80% !important;
   }
 
-   .custom-element-2{ 
-      width: 5% !important;
-      top: 955px !important;
-      left: 85% !important;
- }
 
  .custom-section-1{
   padding-top: 5px !important;
@@ -244,18 +260,16 @@
     width: 100% !important;
   }
 
-  .left-el {
-        width: 10% !important;
-    position: absolute !important;
-    top: 4583px !important;
-    left: 4% !important;
+   .left-el {
+        top: 5%;
+        left: -10%;
+        width: 12%;
   }
- 
+
   .right-el {
-width: 10% !important;
-    position: absolute !important;
-    top: 4870px !important;
-    right: 15% !important; 
+top: 100%;
+        right: 2%;
+        width: 12%;
   }
 
   .letsWork{

@@ -194,37 +194,31 @@ const products = [
               </Button>
             </div>
 
-            {/* Right Column */}
-            <div className="flex justify-center">
-              <img
-                src="/Icons/red-left.png"
-                alt="red"
-                className="object-contain custom-element-1"
-                style={{
-                  width: "4%",
-                  position: "absolute",
-                  top: "30%",
-                  left: "55%",
-                }}
-              />
-              <img
-                src="/Images/Hero-Image.png"
-                alt="Hero Illustration"
-                className="object-contain custom-image-1"
-                style={{ width: "65%" }}
-              />
-              <img
-                src="/Icons/blue-right.png"
-                alt="red"
-                className="object-contain custom-element-2"
-                style={{
-                  width: "2%",
-                  position: "absolute",
-                  top: "750px",
-                  left: "88%",
-                }}
-              />
-            </div>
+           {/* Right Column */}
+<div className="flex justify-center relative w-full">
+  {/* Red Left Element */}
+  <img
+    src="/Icons/red-left.png"
+    alt="red"
+    className="object-contain custom-element-1"
+  />
+
+  {/* Main Hero Image */}
+  <img
+    src="/Images/Hero-Image.png"
+    alt="Hero Illustration"
+    className="object-contain custom-image-1"
+    style={{ width: "65%" }}
+  />
+
+  {/* Blue Right Element */}
+  <img
+    src="/Icons/blue-right.png"
+    alt="blue"
+    className="object-contain custom-element-2"
+  />
+</div>
+
           </div>
         </main>
       </div>

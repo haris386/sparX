@@ -75,25 +75,31 @@ export default function WhyChooseSparX() {
         </div>
       </div>
 
-      <div style={{ margin: "auto", width: "80%" }}>
-        <img
-                src="/Icons/red-left.png"
-                alt="red"
-                className="object-contain left-el"
-              />
-        <h2
-          className="text-gray-900 our-software"
-          style={{ fontSize: "30px", fontWeight: "400", padding: "10rem 15rem", paddingBottom:"5rem" }}
-        >
-          Our software enables AI-augmented decisions across critical insurer
-          and contractor workflows—from office operations to field execution.
-        </h2>
-        <img
-                src="/Icons/red-right.png"
-                alt="red"
-                className="object-contain right-el"
-              />
-      </div>
+     <div style={{ margin: "auto", width: "80%", position: "relative" }}>
+  <img
+    src="/Icons/red-left.png"
+    alt="red"
+    className="object-contain left-el"
+  />
+  <h2
+    className="text-gray-900 our-software text-center"
+    style={{
+      fontSize: "30px",
+      fontWeight: "400",
+      padding: "10rem 15rem",
+      paddingBottom: "5rem",
+    }}
+  >
+    Our software enables AI-augmented decisions across critical insurer
+    and contractor workflows—from office operations to field execution.
+  </h2>
+  <img
+    src="/Icons/red-right.png"
+    alt="red"
+    className="object-contain right-el"
+  />
+</div>
+
     </section>
   );
 }
