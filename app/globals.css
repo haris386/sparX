@@ -284,3 +284,13 @@ top: 100%;
 .font-outfit {
   font-family: 'Outfit', sans-serif;
 }
+
+.custom-section-1 {
+  transform-style: preserve-3d;
+  overflow: hidden;
+}
+
+.core-card {
+  will-change: transform, opacity;
+  transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+}

@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Menu, X } from "lucide-react";
 import EverythingYouNeedSection from "@/components/everything-you-need-section";
 import Footer from "@/components/Footer";
@@ -7,6 +7,12 @@ import IndustriesServed from "@/components/Industries-served";
 import OurCoreProducts from "@/components/our-core-products";
 import { Button } from "@/components/ui/button";
 import WhyChooseSparX from "@/components/why-choose-sparx";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Lenis from "@studio-freight/lenis";
+
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function HomePage() {
   const [isChatOpen, setIsChatOpen] = useState(false);
@@ -20,7 +26,7 @@ export default function HomePage() {
     }
   };
 
-const products = [
+  const products = [
     {
       name: "AccuraCore",
       desc: "The new standard in Contractor CRMs.",
@@ -38,10 +44,155 @@ const products = [
     },
   ];
 
+  const mainRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // 🎬 3D multilayer depth scroll animation between sections
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".hero-section",
+          start: "top top",
+          end: "bottom+=100% center",
+          scrub: 1.5,
+        },
+      });
+
+      // Hero fades back with depth
+      tl.to(".hero-section", {
+        z: -300,
+        opacity: 0.6,
+        scale: 0.95,
+        ease: "power2.out",
+      });
+
+      // OurCoreProducts slides forward smoothly
+      tl.fromTo(
+        ".core-products-section",
+        { z: 300, opacity: 0, rotateY: 10 },
+        { z: 0, opacity: 1, rotateY: 0, ease: "power2.out" },
+        "<"
+      );
+    }, mainRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  useEffect(() => {
+  const ctx = gsap.context(() => {
+    // Existing Hero → Core Products animation
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: ".hero-section",
+        start: "top top",
+        end: "bottom+=100% center",
+        scrub: 1.5,
+      },
+    });
+
+    tl.to(".hero-section", {
+      z: -300,
+      opacity: 0.6,
+      scale: 0.95,
+      ease: "power2.out",
+    });
+
+    tl.fromTo(
+      ".core-products-section",
+      { z: 300, opacity: 0, rotateY: 10 },
+      { z: 0, opacity: 1, rotateY: 0, ease: "power2.out" },
+      "<"
+    );
+
+    // 🧊 3D Reveal for WHY CHOOSE SPARX
+    gsap.from(".why-card", {
+      scrollTrigger: {
+        trigger: ".why-section",
+        start: "top 80%",
+        end: "bottom center",
+        scrub: 1,
+      },
+      opacity: 0,
+      y: 80,
+      z: -100,
+      rotateX: 20,
+      stagger: 0.15,
+      ease: "power2.out",
+    });
+
+    gsap.from(".why-right img", {
+      scrollTrigger: {
+        trigger: ".why-section",
+        start: "top 85%",
+        end: "bottom center",
+        scrub: 1.2,
+      },
+      opacity: 0,
+      rotateY: -15,
+      z: 150,
+      ease: "power2.out",
+    });
+
+    gsap.from(".why-bottom", {
+      scrollTrigger: {
+        trigger: ".why-bottom",
+        start: "top 85%",
+        end: "bottom bottom",
+        scrub: 1,
+      },
+      opacity: 0,
+      y: 100,
+      ease: "power2.out",
+    });
+  }, mainRef);
+
+  return () => ctx.revert();
+}, []);
+
+useEffect(() => {
+  // 🧈 Smooth scrolling setup
+  const lenis = new Lenis({
+    duration: 1.8,       // smoothness (higher = slower, smoother)
+    lerp: 0.05,          // easing factor (lower = smoother)
+    smoothWheel: true,   // smooth on mouse wheel
+    smoothTouch: true,   // smooth on touch
+    wheelMultiplier: 0.9,
+  });
+
+  function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+  }
+
+  requestAnimationFrame(raf);
+
+  // 👇 Keep ScrollTrigger synced with Lenis
+  lenis.on("scroll", ScrollTrigger.update);
+  gsap.ticker.add((time) => {
+    lenis.raf(time * 1000);
+  });
+
+  return () => {
+    gsap.ticker.remove(() => {});
+    lenis.destroy();
+  };
+}, []);
+
+
+
   return (
-    <>
-      <div
-        className="bg-cover bg-center bg-no-repeat"
+    <div
+      ref={mainRef}
+      className="relative"
+      style={{
+        perspective: "1500px",
+        transformStyle: "preserve-3d",
+        overflowX: "hidden",
+      }}
+    >
+      {/* 🌟 Hero Section */}
+      <section
+        className="hero-section relative z-10 bg-cover bg-center bg-no-repeat"
         style={{
           background: "linear-gradient(to right, #f1f2f4, #f3e3d4)",
         }}
@@ -59,7 +210,7 @@ const products = [
             <div className="flex items-center space-x-2">
               <img
                 src="/Logos/SparX/Sparx-W-Dark-RGB-01.png"
-                alt="AccuraCore Logo"
+                alt="Sparx Logo"
                 className="w-24 object-contain"
               />
             </div>
@@ -83,7 +234,7 @@ const products = [
               ))}
             </div>
 
-            {/* Desktop Button */}
+            {/* Explore Products Button */}
             <div className="hidden md:flex items-center space-x-3">
               <Button
                 className="text-white rounded-full flex items-center"
@@ -125,8 +276,6 @@ const products = [
                 <span onClick={() => handleScroll("why")}>Why Choose Us</span>
                 <span onClick={() => handleScroll("contact")}>Contact Us</span>
               </div>
-
-              {/* Mobile Button */}
               <div className="flex flex-col space-y-3 mt-4">
                 <Button
                   className="text-white rounded-full flex items-center"
@@ -150,7 +299,7 @@ const products = [
           )}
         </header>
 
-        {/* Hero Section */}
+        {/* Hero Main */}
         <main id="about" className="px-6 py-0">
           <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center main-div">
             {/* Left Column */}
@@ -194,51 +343,47 @@ const products = [
               </Button>
             </div>
 
-           {/* Right Column */}
-<div className="flex justify-center relative w-full">
-  {/* Red Left Element */}
-  <img
-    src="/Icons/red-left.png"
-    alt="red"
-    className="object-contain custom-element-1"
-  />
-
-  {/* Main Hero Image */}
-  <img
-    src="/Images/Hero-Image.png"
-    alt="Hero Illustration"
-    className="object-contain custom-image-1"
-    style={{ width: "65%" }}
-  />
-
-  {/* Blue Right Element */}
-  <img
-    src="/Icons/blue-right.png"
-    alt="blue"
-    className="object-contain custom-element-2"
-  />
-</div>
-
+            {/* Right Column */}
+            <div className="flex justify-center relative w-full">
+              <img
+                src="/Icons/red-left.png"
+                alt="red"
+                className="object-contain custom-element-1"
+              />
+              <img
+                src="/Images/Hero-Image.png"
+                alt="Hero Illustration"
+                className="object-contain custom-image-1"
+                style={{ width: "65%" }}
+              />
+              <img
+                src="/Icons/blue-right.png"
+                alt="blue"
+                className="object-contain custom-element-2"
+              />
+            </div>
           </div>
         </main>
-      </div>
+      </section>
 
-      <div id="products">
+      {/* 🧊 Core Products Section with 3D Scroll Depth */}
+      <section className="core-products-section relative z-20">
         <OurCoreProducts />
-      </div>
+      </section>
 
       <EverythingYouNeedSection />
 
-      <div id="why">
+      <section id="why">
         <WhyChooseSparX />
-      </div>
+      </section>
 
       <IndustriesServed />
 
-      <div id="contact">
+      <section id="contact">
         <Footer />
-      </div>
+      </section>
 
+      {/*  Chat Modal */}
       {isChatOpen && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
           <div className="bg-white rounded-3xl p-6 lg:p-8 shadow-xl w-[90%] max-w-[600px] max-h-[90vh] overflow-y-auto relative">
@@ -254,6 +399,7 @@ const products = [
             <p className="text-gray-500 text-sm mb-6 text-center">
               Please fill out this form with the required information
             </p>
+            {/* Form */}
             <form
               action="https://formspree.io/f/mnnbqejn"
               method="POST"
@@ -304,14 +450,28 @@ const products = [
         </div>
       )}
 
+      {/* 🔻 Products Modal */}
       {isProductsOpen && (
         <div className="fixed inset-0 bg-black/70 flex items-center justify-center z-50">
           <div className="bg-white rounded-3xl p-6 lg:p-8 shadow-xl w-[90%] max-w-[500px] relative">
-            <button onClick={() => setIsProductsOpen(false)} className="absolute top-4 right-4 text-gray-500 hover:text-gray-800">✕</button>
-            <h3 className="text-lg font-semibold text-center mb-4">Our Products</h3>
+            <button
+              onClick={() => setIsProductsOpen(false)}
+              className="absolute top-4 right-4 text-gray-500 hover:text-gray-800"
+            >
+              ✕
+            </button>
+            <h3 className="text-lg font-semibold text-center mb-4">
+              Our Products
+            </h3>
             <div className="flex flex-col gap-4">
               {products.map((p) => (
-                <a key={p.name} href={p.link} target="_blank" rel="noopener noreferrer" className="p-4 rounded-lg border border-gray-300 hover:bg-red-50 transition">
+                <a
+                  key={p.name}
+                  href={p.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-4 rounded-lg border border-gray-300 hover:bg-red-50 transition"
+                >
                   <h4 className="font-semibold text-red-600">{p.name}</h4>
                   <p className="text-gray-700 text-sm">{p.desc}</p>
                 </a>
@@ -320,6 +480,6 @@ const products = [
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
