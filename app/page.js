@@ -152,7 +152,7 @@ export default function HomePage() {
 useEffect(() => {
   // 🧈 Smooth scrolling setup
   const lenis = new Lenis({
-    duration: 1.8,       // smoothness (higher = slower, smoother)
+    duration: 3.5,       // smoothness (higher = slower, smoother)
     lerp: 0.05,          // easing factor (lower = smoother)
     smoothWheel: true,   // smooth on mouse wheel
     smoothTouch: true,   // smooth on touch
