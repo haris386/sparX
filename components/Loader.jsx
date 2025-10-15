@@ -1,32 +1,52 @@
 "use client";
-import { useEffect } from "react";
-import { gsap } from "gsap";
+import { useEffect, useState } from "react";
 
-export default function Loader({ onComplete }) {
+export default function Loader({ onFinish }) {
+  const [bgColor, setBgColor] = useState("linear-gradient(to right, #f1f2f4, #f3e3d4)");
+  const [logo, setLogo] = useState("/Logos/SparX/Sparx-W-Light-RGB-01.png");
+
   useEffect(() => {
-    const tl = gsap.timeline({
-      onComplete: onComplete,
-    });
+    let flip = false;
+    let phaseCount = 0;
+    const totalPhases = 6;
+    const phaseDuration = 1000;
 
-    tl.to(".loader-bar", {
-      width: "100%",
-      duration: 1.4,
-      ease: "power2.inOut",
-    })
-      .to(".loader", {
-        opacity: 0,
-        duration: 0.6,
-        ease: "power2.out",
-      })
-      .set(".loader", { display: "none" });
-  }, [onComplete]);
+    const interval = setInterval(() => {
+      flip = !flip;
+      phaseCount++;
+
+      if (flip) {
+        setBgColor("#FF3A41");
+        setLogo("/Logos/SparX/Sparx-W-Dark-RGB-01.png");
+      } else {
+        setBgColor("linear-gradient(to right, #f1f2f4, #f3e3d4)");
+        setLogo("/Logos/SparX/Sparx-W-Light-RGB-01.png");
+      }
+
+      // stop after completing 10 phases
+      if (phaseCount >= totalPhases) {
+        clearInterval(interval);
+        onFinish();
+      }
+    }, phaseDuration);
+
+    return () => clearInterval(interval);
+  }, [onFinish]);
 
   return (
-    <div className="loader fixed inset-0 z-[9999] flex flex-col items-center justify-center bg-[#FFF9ED]">
-      <div className="loader-bar bg-[#FF3A41] h-[4px] w-[0%] rounded-full"></div>
-      <p className="mt-5 text-gray-800 font-semibold tracking-wide text-sm">
-        Loading experience...
-      </p>
+    <div
+      className="fixed inset-0 flex items-center justify-center z-[9999]"
+      style={{
+        background: bgColor,
+        transition: "none", 
+      }}
+    >
+      <img
+        src={logo}
+        alt="SparX Logo"
+        className="w-66 md:w-86 select-none"
+        draggable="false"
+      />
     </div>
   );
 }

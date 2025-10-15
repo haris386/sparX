@@ -10,11 +10,12 @@ import WhyChooseSparX from "@/components/why-choose-sparx";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "@studio-freight/lenis";
-
+import Loader from "@/components/Loader";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HomePage() {
+  const [loading, setLoading] = useState(true);
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [isProductsOpen, setIsProductsOpen] = useState(false);
@@ -45,6 +46,15 @@ export default function HomePage() {
   ];
 
   const mainRef = useRef(null);
+
+  useEffect(() => {
+    if (!loading) {
+      // when loader done, allow scroll
+      document.body.style.overflow = "auto";
+    } else {
+      document.body.style.overflow = "hidden";
+    }
+  }, [loading]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -79,106 +89,108 @@ export default function HomePage() {
   }, []);
 
   useEffect(() => {
-  const ctx = gsap.context(() => {
-    // Existing Hero → Core Products animation
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: ".hero-section",
-        start: "top top",
-        end: "bottom+=100% center",
-        scrub: 1.5,
-      },
+    const ctx = gsap.context(() => {
+      // Existing Hero → Core Products animation
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".hero-section",
+          start: "top top",
+          end: "bottom+=100% center",
+          scrub: 1.5,
+        },
+      });
+
+      tl.to(".hero-section", {
+        z: -300,
+        opacity: 0.6,
+        scale: 0.95,
+        ease: "power2.out",
+      });
+
+      tl.fromTo(
+        ".core-products-section",
+        { z: 300, opacity: 0, rotateY: 10 },
+        { z: 0, opacity: 1, rotateY: 0, ease: "power2.out" },
+        "<"
+      );
+
+      // 🧊 3D Reveal for WHY CHOOSE SPARX
+      gsap.from(".why-card", {
+        scrollTrigger: {
+          trigger: ".why-section",
+          start: "top 80%",
+          end: "bottom center",
+          scrub: 1,
+        },
+        opacity: 0,
+        y: 80,
+        z: -100,
+        rotateX: 20,
+        stagger: 0.15,
+        ease: "power2.out",
+      });
+
+      gsap.from(".why-right img", {
+        scrollTrigger: {
+          trigger: ".why-section",
+          start: "top 85%",
+          end: "bottom center",
+          scrub: 1.2,
+        },
+        opacity: 0,
+        rotateY: -15,
+        z: 150,
+        ease: "power2.out",
+      });
+
+      gsap.from(".why-bottom", {
+        scrollTrigger: {
+          trigger: ".why-bottom",
+          start: "top 85%",
+          end: "bottom bottom",
+          scrub: 1,
+        },
+        opacity: 0,
+        y: 100,
+        ease: "power2.out",
+      });
+    }, mainRef);
+
+    return () => ctx.revert();
+  }, []);
+
+  useEffect(() => {
+    // 🧈 Smooth scrolling setup
+    const lenis = new Lenis({
+      duration: 3.5, // smoothness (higher = slower, smoother)
+      lerp: 0.05, // easing factor (lower = smoother)
+      smoothWheel: true, // smooth on mouse wheel
+      smoothTouch: true, // smooth on touch
+      wheelMultiplier: 0.9,
     });
 
-    tl.to(".hero-section", {
-      z: -300,
-      opacity: 0.6,
-      scale: 0.95,
-      ease: "power2.out",
-    });
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
 
-    tl.fromTo(
-      ".core-products-section",
-      { z: 300, opacity: 0, rotateY: 10 },
-      { z: 0, opacity: 1, rotateY: 0, ease: "power2.out" },
-      "<"
-    );
-
-    // 🧊 3D Reveal for WHY CHOOSE SPARX
-    gsap.from(".why-card", {
-      scrollTrigger: {
-        trigger: ".why-section",
-        start: "top 80%",
-        end: "bottom center",
-        scrub: 1,
-      },
-      opacity: 0,
-      y: 80,
-      z: -100,
-      rotateX: 20,
-      stagger: 0.15,
-      ease: "power2.out",
-    });
-
-    gsap.from(".why-right img", {
-      scrollTrigger: {
-        trigger: ".why-section",
-        start: "top 85%",
-        end: "bottom center",
-        scrub: 1.2,
-      },
-      opacity: 0,
-      rotateY: -15,
-      z: 150,
-      ease: "power2.out",
-    });
-
-    gsap.from(".why-bottom", {
-      scrollTrigger: {
-        trigger: ".why-bottom",
-        start: "top 85%",
-        end: "bottom bottom",
-        scrub: 1,
-      },
-      opacity: 0,
-      y: 100,
-      ease: "power2.out",
-    });
-  }, mainRef);
-
-  return () => ctx.revert();
-}, []);
-
-useEffect(() => {
-  // 🧈 Smooth scrolling setup
-  const lenis = new Lenis({
-    duration: 3.5,       // smoothness (higher = slower, smoother)
-    lerp: 0.05,          // easing factor (lower = smoother)
-    smoothWheel: true,   // smooth on mouse wheel
-    smoothTouch: true,   // smooth on touch
-    wheelMultiplier: 0.9,
-  });
-
-  function raf(time) {
-    lenis.raf(time);
     requestAnimationFrame(raf);
+
+    // 👇 Keep ScrollTrigger synced with Lenis
+    lenis.on("scroll", ScrollTrigger.update);
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+
+    return () => {
+      gsap.ticker.remove(() => {});
+      lenis.destroy();
+    };
+  }, []);
+
+  if (loading) {
+    return <Loader onFinish={() => setLoading(false)} />;
   }
-
-  requestAnimationFrame(raf);
-
-  // 👇 Keep ScrollTrigger synced with Lenis
-  lenis.on("scroll", ScrollTrigger.update);
-  gsap.ticker.add((time) => {
-    lenis.raf(time * 1000);
-  });
-
-  return () => {
-    gsap.ticker.remove(() => {});
-    lenis.destroy();
-  };
-}, []);
-
-
 
   return (
     <div
