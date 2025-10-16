@@ -343,3 +343,187 @@ top: 100%;
 .animate-blue-move {
   animation: blue-move 4s ease-in-out infinite;
 }
+
+/* Initial hidden state */
+.why-left,
+.why-right {
+  opacity: 0;
+  transform: translateX(0);
+  transition: all 1s ease-out;
+}
+
+/* Slide from left */
+.why-left {
+  transform: translateX(-80px);
+}
+
+/* Slide from right */
+.why-right {
+  transform: translateX(80px);
+}
+
+/* When in view */
+.why-section.in-view .why-left,
+.why-section.in-view .why-right {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+/* Left icon moves in → out smoothly */
+@keyframes move-left {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  50% {
+    transform: scale(0.8) translate(20px, 0); /* moves toward text */
+  }
+  100% {
+    transform: scale(1) translate(0, 0);
+  }
+}
+
+.animate-move-left {
+  animation: move-left 4s ease-in-out infinite;
+}
+
+/* Right icon mirrors the left */
+@keyframes move-right {
+  0% {
+    transform: scale(1) translate(0, 0);
+  }
+  50% {
+    transform: scale(0.8) translate(-20px, 0); /* moves toward text */
+  }
+  100% {
+    transform: scale(1) translate(0, 0);
+  }
+}
+
+.animate-move-right {
+  animation: move-right 4s ease-in-out infinite;
+}
+
+/* ---------- Initial hidden state ---------- */
+.industriesServed .card {
+  opacity: 0;
+  transform: translateY(0);
+  transition: all 0.8s ease-out;
+}
+
+/* ---------- When in view ---------- */
+.industriesServed.in-view .card {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* ---------- Specific entry directions ---------- */
+.card-left {
+  transform: translateX(-80px);
+}
+.card-up {
+  transform: translateY(80px);
+}
+.card-right {
+  transform: translateX(80px);
+}
+
+/* ---------- Slide-in animations ---------- */
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-80px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes slideInUp {
+  0% {
+    transform: translateY(80px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+@keyframes slideInRight {
+  0% {
+    transform: translateX(80px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* ---------- Animate when visible ---------- */
+.industriesServed.in-view .card-left {
+  animation: slideInLeft 1s ease-out forwards;
+}
+.industriesServed.in-view .card-up {
+  animation: slideInUp 1s ease-out forwards;
+}
+.industriesServed.in-view .card-right {
+  animation: slideInRight 1s ease-out forwards;
+}
+
+/* ---------- Add slight delay for a staggered reveal ---------- */
+.industriesServed.in-view .card-up {
+  animation-delay: 0.2s;
+}
+.industriesServed.in-view .card-right {
+  animation-delay: 0.4s;
+}
+
+/* Initial hidden states */
+.letsWork,
+.together {
+  opacity: 0;
+  transition: all 1s ease-out;
+}
+
+/* Entry positions */
+.letsWork {
+  transform: translateX(-80px);
+}
+
+.together {
+  transform: translateX(80px);
+}
+
+/* Keyframes */
+@keyframes slideInLeft {
+  0% {
+    transform: translateX(-80px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    transform: translateX(80px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Active state when footer is visible */
+.customF.in-view .letsWork {
+  animation: slideInLeft 1s ease-out forwards;
+}
+
+.customF.in-view .together {
+  animation: slideInRight 1s ease-out forwards;
+  animation-delay: 0.2s; /* small stagger for polish */
+}

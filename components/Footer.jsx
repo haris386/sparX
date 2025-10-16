@@ -1,10 +1,26 @@
-"use client";
 
-import { useState } from "react";
+"use client";
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 
 export default function Footer() {
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const footer = document.querySelector(".customF");
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          footer.classList.add("in-view");
+        } else {
+          footer.classList.remove("in-view");
+        }
+      },
+      { threshold: 0.3 }
+    );
+    if (footer) observer.observe(footer);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <footer
@@ -22,15 +38,17 @@ export default function Footer() {
       >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
           {/* Left Column - Heading */}
-          <div>
-            <h2
-              className="text-white leading-tight letsWork"
-              style={{ fontSize: "60px" }}
-            >
-              Let's Work
-              <br />
-              <span style={{ marginLeft: "12%" }}>Together</span>
-            </h2>
+          <div style={{width:"fit-content"}}>
+           <h2
+  className="text-white leading-tight text-center"
+  style={{ fontSize: "60px" }}
+>
+  <span className="letsWork block">Let's Work</span>
+  <span className="together block" style={{ marginLeft: "12%" }}>
+    Together
+  </span>
+</h2>
+
           </div>
 
           {/* Right Column - Text and Button */}
