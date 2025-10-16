@@ -64,74 +64,7 @@ export function FadeInWebsite({ mainRef }) {
             zIndex: 0,
           }}
         >
-          <header className="absolute top-0 w-full px-6 py-4">
-            <nav
-              className="flex items-center justify-between mx-auto rounded-full px-8 py-4"
-              style={{
-                width: "95%",
-                backgroundColor: "#191817",
-              }}
-            >
-              <div className="flex items-center space-x-2">
-                <img
-                  src="/Logos/SparX/Sparx-W-Dark-RGB-01.png"
-                  alt="SparX Logo"
-                  className="w-24 object-contain"
-                />
-              </div>
 
-              {/* Desktop Menu */}
-              <div className="hidden md:flex items-center space-x-8">
-                {[
-                  { label: "About", id: "about" },
-                  { label: "Products", id: "products" },
-                  { label: "Why Choose Us", id: "why" },
-                  { label: "Contact Us", id: "contact" },
-                ].map((item) => (
-                  <div
-                    key={item.id}
-                    onClick={() => handleScroll(item.id)}
-                    className="flex items-center space-x-1 text-white hover:text-red-200 cursor-pointer"
-                    style={{ fontSize: "12px" }}
-                  >
-                    <span>{item.label}</span>
-                  </div>
-                ))}
-              </div>
-
-              {/* Desktop Button */}
-              <div className="hidden md:flex items-center space-x-3">
-                <Button
-                  className="text-white rounded-full flex items-center"
-                  style={{
-                    backgroundColor: "#FF3A41",
-                    padding: "25px 15px",
-                    border: "2px solid #f8a8ac",
-                    fontSize: "13px",
-                  }}
-                  onClick={() => setIsProductsOpen(true)}
-                >
-                  Explore Our Products
-                  <img
-                    src="/Icons/Vector.png"
-                    alt="Arrow Icon"
-                    className="w-3 h-4 ml-2"
-                  />
-                </Button>
-              </div>
-
-              {/* Mobile Hamburger */}
-              <div className="md:hidden flex items-center">
-                <button onClick={() => setMenuOpen(!menuOpen)}>
-                  {menuOpen ? (
-                    <X className="text-white w-8 h-8" />
-                  ) : (
-                    <Menu className="text-white w-8 h-8" />
-                  )}
-                </button>
-              </div>
-            </nav>
-          </header>
 
           {/* Hero Content */}
           <div className="relative z-10 w-full max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center px-6">

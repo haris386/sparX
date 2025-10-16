@@ -121,7 +121,7 @@
   }
   body {
     @apply bg-background text-foreground;
-    background: linear-gradient(to right, #f1f2f4, #f3e3d4);
+    background: #f3e8c8;
   }
 }
 

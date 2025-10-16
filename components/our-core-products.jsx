@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function OurCoreProducts() {
   return (
-    <section className="py-20 px-4 custom-section-1" style={{ background: "linear-gradient(to right, #f1f2f4, #f3e3d4)",}}>
+    <section className="py-20 px-4 custom-section-1" style={{ background: "#f3e8c8",}}>
       <div>
         <div
           className="grid lg:grid-cols-2 gap-30 items-start"
