@@ -328,3 +328,18 @@ top: 100%;
   animation: pulse-move 4s ease-in-out infinite;
 }
 
+@keyframes blue-move {
+  0% {
+    transform: translate(0px, 0px);
+  }
+  50% {
+    transform: translate(15px, -15px); /* moves toward 2 o’clock */
+  }
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+
+.animate-blue-move {
+  animation: blue-move 4s ease-in-out infinite;
+}

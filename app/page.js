@@ -127,7 +127,7 @@ export default function HomePage() {
             <div style={{ marginLeft: "5%", marginTop:"10rem" }}>
               <h1
                 className="text-gray-900 leading-tight mb-6 custom-font-1"
-                style={{ fontSize: "40px", fontWeight: "400" }}
+                style={{ fontSize: "50px", fontWeight: "400" }}
               >
                 Empowering the Future with Smarter Digital{" "}
                 <span
@@ -169,18 +169,18 @@ export default function HomePage() {
               <img
                 src="/Icons/red-left.png"
                 alt="red"
-                className="object-contain custom-element-1"
+                className="object-contain custom-element-1 animate-pulse-move"
               />
               <img
-                src="/Images/Hero-Image2.png"
+                src="/Images/Hero-Image.png"
                 alt="Hero Illustration"
                 className="object-contain custom-image-1"
-                style={{ width: "65%", }}
+                style={{ width: "65%", filter: "drop-shadow(0px 33px 70px rgba(255, 0, 0, 0.4))", }}
               />
               <img
                 src="/Icons/blue-right.png"
                 alt="blue"
-                className="object-contain custom-element-2"
+                className="object-contain custom-element-2 animate-blue-move"
               />
             </div>
           </div>
