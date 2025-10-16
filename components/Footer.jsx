@@ -1,35 +1,10 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-gsap.registerPlugin(ScrollTrigger);
 
 export default function Footer() {
   const [isOpen, setIsOpen] = useState(false);
-
-  // Separate refs for left and right main sections
-  const leftMainRef = useRef(null);
-  const rightMainRef = useRef(null);
-
-  useEffect(() => {
-    if (leftMainRef.current && rightMainRef.current) {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: leftMainRef.current,
-          start: "top 80%",
-        },
-      });
-
-      // Left slide-in
-      tl.from(leftMainRef.current, { x: -150, opacity: 0, duration: 1 });
-
-      // Right slide-in with slight delay
-      tl.from(rightMainRef.current, { x: 150, opacity: 0, duration: 1 }, "-=0.5");
-    }
-  }, []);
 
   return (
     <footer
@@ -47,19 +22,19 @@ export default function Footer() {
       >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
           {/* Left Column - Heading */}
-          <div ref={leftMainRef}>
+          <div>
             <h2
               className="text-white leading-tight letsWork"
               style={{ fontSize: "60px" }}
             >
               Let's Work
               <br />
-              <span style={{ marginLeft: "10%" }}>Together</span>
+              <span style={{ marginLeft: "12%" }}>Together</span>
             </h2>
           </div>
 
           {/* Right Column - Text and Button */}
-          <div ref={rightMainRef} className="space-y-6 flex flex-col justify-center">
+          <div className="space-y-6 flex flex-col justify-center">
             <p
               className="text-white leading-relaxed"
               style={{ fontSize: "16px" }}
@@ -146,6 +121,7 @@ export default function Footer() {
             </p>
           </div>
 
+          {/* Contact Us Column */}
           {/* Contact Us Column */}
           <div className="space-y-4">
             <h3 className="text-white" style={{ fontSize: "20px" }}>

@@ -1,5 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import 'locomotive-scroll/dist/locomotive-scroll.css';
+
 
 @custom-variant dark (&:is(.dark *));
 
@@ -112,12 +114,14 @@
   --sidebar-ring: oklch(0.551 0.027 264.364);
 }
 
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
   body {
     @apply bg-background text-foreground;
+    background: linear-gradient(to right, #f1f2f4, #f3e3d4);
   }
 }
 
@@ -137,8 +141,8 @@
 
 .custom-element-1 {
   position: absolute;
-    top: 0%;
-    left: 10%;
+    top: 5%;
+    left: 15%;
     width: 6%;
 }
 
@@ -294,3 +298,33 @@ top: 100%;
   will-change: transform, opacity;
   transition: transform 0.8s ease-out, opacity 0.8s ease-out;
 }
+
+.hero-section {
+  position: relative;
+  z-index: 1;
+}
+
+.our-core-products {
+  position: relative;
+  z-index: 2;
+}
+
+@keyframes pulse-move {
+  0% {
+    transform: scale(1) translate(0, 0);
+    filter: hue-rotate(60deg) brightness(1.2); /* near Hero Image → yellow */
+  }
+  50% {
+    transform: scale(1.2) translate(-20px, -20px);
+    filter: hue-rotate(0deg); /* far away → red */
+  }
+  100% {
+    transform: scale(1) translate(0, 0);
+    filter: hue-rotate(60deg) brightness(1.2); /* back near → yellow */
+  }
+}
+
+.animate-pulse-move {
+  animation: pulse-move 4s ease-in-out infinite;
+}
+
